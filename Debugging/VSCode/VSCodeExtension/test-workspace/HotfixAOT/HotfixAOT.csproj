@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <AssemblyName>HotfixAOT</AssemblyName>
+    <RootNamespace>HotfixAOT</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="ILRuntime">
+      <HintPath>../../../../ILRuntime/bin/Debug/netstandard2.0/ILRuntime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="TestHotfix.cs" />
+    <Compile Include="HotfixManager.cs" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;../UnityProject/Assets/StreamingAssets/&quot;" />
+  </Target>
+
+</Project>

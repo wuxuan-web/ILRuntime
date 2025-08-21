@@ -1,0 +1,54 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to ILRuntime (Unity)",
+            "type": "ilruntime",
+            "request": "launch",
+            "address": "localhost:56000",
+            "debug": true,
+            "stopOnEntry": false,
+            "trace": true,
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "ILRUNTIME_DEBUG": "1"
+            }
+        },
+        {
+            "name": "Attach to ILRuntime (Auto)",
+            "type": "ilruntime",
+            "request": "launch",
+            "address": "${command:AskForAddress}",
+            "debug": true,
+            "stopOnEntry": false,
+            "trace": true,
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Debug Hotfix Code",
+            "type": "ilruntime",
+            "request": "launch",
+            "address": "localhost:56000",
+            "debug": true,
+            "stopOnEntry": false,
+            "trace": true,
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/HotfixAOT/bin/Debug/net9.0/HotfixAOT.dll",
+            "args": []
+        },
+        {
+            "name": "Test Hot Reload",
+            "type": "ilruntime",
+            "request": "launch",
+            "address": "localhost:56000",
+            "debug": true,
+            "stopOnEntry": false,
+            "trace": true,
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "ILRUNTIME_DEBUG": "1",
+                "HOT_RELOAD_ENABLED": "1"
+            }
+        }
+    ]
+}

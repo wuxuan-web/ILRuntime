@@ -255,15 +255,20 @@ namespace ILRuntime.VSCode
 
             if (debugged.Connected)
             {
-                if (debugged.CheckDebugServerVersion())
+                // 输出调试信息
+                SendOutput($"Connected to ILRuntime debug server. Remote version: {debugged.RemoteDebugVersion}");
+                
+                // 检查调试服务器版本，支持版本0、2和4
+                if (debugged.RemoteDebugVersion == 0 || debugged.RemoteDebugVersion == 2 || debugged.RemoteDebugVersion == 4)
                 {
+                    SendOutput($"Version {debugged.RemoteDebugVersion} is supported. Establishing debug session...");
                     debugged.OnDisconnected = OnDisconnected;
                     return new LaunchResponse();
                 }
                 else
                 {
                     debugged.Close();
-                    throw new ProtocolException(String.Format("ILRuntime Debugger version mismatch\n Expected version:{0}\n Actual version:{1}", DebuggerServer.Version, debugged.RemoteDebugVersion));
+                    throw new ProtocolException(String.Format("ILRuntime Debugger version mismatch\n Expected version: 0, 2 or 4\n Actual version:{0}", debugged.RemoteDebugVersion));
                 }
             }
             else

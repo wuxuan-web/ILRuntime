@@ -2,31 +2,34 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "npm: esbuild-base",
             "type": "npm",
-            "script": "build",
-            "isBackground": false,
-            "group": {
-                "isDefault": true,
-                "kind": "build"
+            "script": "esbuild-base",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
             },
-            "problemMatcher": "$esbuild",
-            "label": "npm: build"
+            "problemMatcher": []
         },
         {
+            "label": "npm: watch",
             "type": "npm",
             "script": "watch",
             "group": "build",
-            "problemMatcher": "$esbuild-watch",
-            "isBackground": true,
-            "label": "npm: watch"
-        },
-        {
-            "type": "npm",
-            "script": "watch-web",
-            "group": "build",
-            "problemMatcher": "$esbuild-watch",
-            "isBackground": true,
-            "label": "npm: watch web"
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
         }
     ]
 }

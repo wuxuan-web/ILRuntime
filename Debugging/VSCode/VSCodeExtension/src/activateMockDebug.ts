@@ -13,7 +13,7 @@ import { MockDebugSession } from './mockDebug';
 import { FileAccessor } from './mockRuntime';
 import { ServerInfo, currentSession } from './extension';
 import * as path from 'path';
-import { promises } from 'dns';
+// import { promises } from 'dns';
 
 let extensionPath:string;
 function getExtensionFilePath(extensionfile: string): string {
@@ -197,9 +197,9 @@ export function activateMockDebug(context: vscode.ExtensionContext, servers : Ma
 		factory = new InlineDebugAdapterFactory();
 	}
 	context.subscriptions.push(vscode.debug.registerDebugAdapterDescriptorFactory('ilruntime', factory));
-	if ('dispose' in factory) {
-		context.subscriptions.push(factory);
-	}
+	// if ('dispose' in factory) {
+	// 	context.subscriptions.push(factory);
+	// }
 
 	// override VS Code's default implementation of the "inline values" feature"
 	context.subscriptions.push(vscode.languages.registerInlineValuesProvider('csharp', {

@@ -65,11 +65,22 @@
   },
   "main": "./dist/extension.js",
   "activationEvents": [
+    "onStartupFinished",
     "onDebugResolve:ilruntime",
     "onDebugDynamicConfigurations:ilruntime",
     "onCommand:extension.ilruntime-debug.getAddress",
     "onCommand:extension.ilruntime-debug.runEditorContents",
-    "onCommand:extension.ilruntime-debug.debugEditorContents"
+    "onCommand:extension.ilruntime-debug.debugEditorContents",
+    "onCommand:extension.ilruntime-debug.hotReloadStatus",
+    "onCommand:extension.ilruntime-debug.manualHotReload",
+    "onCommand:extension.ilruntime-debug.syncBreakpoints",
+    "onCommand:extension.ilruntime-debug.exportBreakpoints",
+    "onCommand:extension.ilruntime-debug.importBreakpoints",
+    "onCommand:extension.ilruntime-debug.backupBreakpoints",
+    "onCommand:extension.ilruntime-debug.showBreakpointInfo",
+    "onCommand:extension.ilruntime-debug.showILRuntimeStatus",
+    "onCommand:extension.ilruntime-debug.showPatchHistory",
+    "onCommand:extension.ilruntime-debug.cleanupPatches"
   ],
   "workspaceTrust": {
     "request": "never"
@@ -117,11 +128,87 @@
       {
         "command": "extension.ilruntime-debug.toggleFormatting",
         "title": "Toggle between decimal and hex formatting"
+      },
+      {
+        "command": "extension.ilruntime-debug.hotReloadStatus",
+        "title": "Show Hot Reload Status",
+        "category": "ILRuntime Debug"
+      },
+      {
+        "command": "extension.ilruntime-debug.manualHotReload",
+        "title": "Manual Hot Reload",
+        "category": "ILRuntime Debug"
+      },
+      {
+        "command": "extension.ilruntime-debug.syncBreakpoints",
+        "title": "Sync Breakpoints",
+        "category": "ILRuntime Debug"
+      },
+      {
+        "command": "extension.ilruntime-debug.exportBreakpoints",
+        "title": "Export Breakpoints",
+        "category": "ILRuntime Debug"
+      },
+      {
+        "command": "extension.ilruntime-debug.importBreakpoints",
+        "title": "Import Breakpoints",
+        "category": "ILRuntime Debug"
+      },
+      {
+        "command": "extension.ilruntime-debug.backupBreakpoints",
+        "title": "Backup Breakpoints",
+        "category": "ILRuntime Debug"
+      },
+      {
+        "command": "extension.ilruntime-debug.showBreakpointInfo",
+        "title": "Show Breakpoint Info",
+        "category": "ILRuntime Debug"
+      },
+      {
+        "command": "extension.ilruntime-debug.showILRuntimeStatus",
+        "title": "Show ILRuntime Status",
+        "category": "ILRuntime Debug"
+      },
+      {
+        "command": "extension.ilruntime-debug.showPatchHistory",
+        "title": "Show Patch History",
+        "category": "ILRuntime Debug"
+      },
+      {
+        "command": "extension.ilruntime-debug.cleanupPatches",
+        "title": "Cleanup Patch Files",
+        "category": "ILRuntime Debug"
       }
     ],
     "breakpoints": [
       {
         "language": "csharp"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.ilruntime-debug.hotReloadStatus",
+        "key": "cmd+shift+h",
+        "mac": "cmd+shift+h",
+        "when": "editorLangId == csharp"
+      },
+      {
+        "command": "extension.ilruntime-debug.manualHotReload",
+        "key": "cmd+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorLangId == csharp"
+      },
+      {
+        "command": "extension.ilruntime-debug.syncBreakpoints",
+        "key": "cmd+shift+b",
+        "mac": "cmd+shift+b",
+        "when": "editorLangId == csharp"
+      },
+      {
+        "command": "extension.ilruntime-debug.showILRuntimeStatus",
+        "key": "cmd+shift+i",
+        "mac": "cmd+shift+i",
+        "when": "editorLangId == csharp"
       }
     ],
     "debuggers": [
@@ -135,7 +222,7 @@
           "program": "./out/win-x86/VSCodeDAILRuntime.exe"
         },
         "osx": {
-          "program": "./out/osx-x86/VSCodeDAILRuntime"
+          "program": "../VSCodeDAILRuntime/bin/Debug/net9.0/osx-arm64/VSCodeDAILRuntime"
         },
         "configurationAttributes": {
           "launch": {
